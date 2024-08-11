@@ -1,0 +1,33 @@
+
+// modulo pattern (%k)
+// if rem = sum % k ; if rem <0 or -ve then add k in rem
+// -ve remender gives wrong ans
+
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+
+        unordered_map<int,int> mp;
+        mp[0] = 1;
+
+        int currsum = 0;
+        int cnt = 0;
+
+        for(int i=0;i<nums.size();i++){
+
+            currsum += nums[i];
+            int rem = currsum % k;
+
+            if(rem <0) rem = rem + k;
+
+            if(mp.find(rem) != mp.end()){
+
+                cnt += mp[rem];
+            }
+            mp[rem]++;
+        }
+
+        return cnt;
+        
+    }
+};
