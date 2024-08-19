@@ -1,0 +1,20 @@
+int find(int A[],int X)
+{
+       //add code here
+       
+      if(A[X] == X) return X;
+      
+      return A[X] = find(A,A[X]);
+}
+void unionSet(int A[],int X,int Z)
+{
+	//add code here.
+	
+	int x = find(A,X);
+	int z = find(A,Z);
+	
+    if (x != z) {
+        A[x] = z;  // Link root of X's set to root of Z's set
+    }
+	
+}
